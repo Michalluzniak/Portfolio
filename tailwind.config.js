@@ -22,6 +22,10 @@ module.exports = {
         dark: '#020202',
       },
     },
+
+    fontFamily: {
+      main: 'Montserrat , sans-serif ',
+    },
   },
   plugins: [],
 };
