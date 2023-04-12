@@ -33,7 +33,7 @@ const Slider = () => {
           </div>
         </section>
 
-        <section className="w-full h-full shrink-0 bg-red-500 sections"></section>
+        <section className="w-full h-full shrink-0 bg-dark sections"></section>
         <section className="w-full h-full bg-green-800  shrink-0 sections"></section>
         <section className="w-full h-full bg-purple-500 shrink-0 sections"></section>
 
