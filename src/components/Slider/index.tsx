@@ -3,11 +3,13 @@ import React, { useEffect, useRef } from 'react';
 import profilePhoto from '../../assets/profile.png';
 
 import { useSliderAnimation } from './hooks/useSliderAnimation';
+import Nav from './Nav';
 
 const Slider = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
 
-  useSliderAnimation(sectionRef);
+  useSliderAnimation(sectionRef, navRef);
 
   return (
     <div className="flex flex-col bg-dark col-start-2 row-start-2 border border-soft-white overflow-hidden ">
@@ -40,15 +42,8 @@ const Slider = () => {
         {/* Section CONTACT */}
       </main>
       {/* NAV*/}
-      <nav className="flex justify-between items-center h-20 w-full px-24 text-soft-white font-main">
-        <p className=" text-xl uppercase">about</p>
-        <span className="bg-soft-white w-1/12 h-0.5"></span>
-        <p className="text-xl uppercase">skills</p>
-        <span className="bg-soft-white w-1/12 h-0.5"></span>
-        <p className="text-xl uppercase">work</p>
-        <span className="bg-soft-white w-1/12 h-0.5"></span>
-        <p className="text-xl uppercase">contact</p>
-      </nav>
+
+      <Nav navRef={navRef}></Nav>
     </div>
   );
 };

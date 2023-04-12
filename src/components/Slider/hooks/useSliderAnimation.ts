@@ -1,26 +1,49 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
 
-export const useSliderAnimation = (container: React.RefObject<HTMLDivElement>, ...rest: any) => {
+export const useSliderAnimation = (container: React.RefObject<HTMLDivElement>, navRef: any) => {
   //
   useEffect(() => {
+    const navElements = navRef.current.children;
+    const navParagraphs = [...navElements].filter((el) => el.tagName === 'P');
+
+    console.log(navParagraphs);
+
     if (!container.current) {
       return;
     }
+
+    navParagraphs.forEach((element) => element.addEventListener('click', slideAnimation));
 
     let sections: any = gsap.utils.toArray('.sections');
 
     let dur = 0.5;
     let offsets: any = [];
+    let navSections = [];
     let oldSlide = 0;
     let activeSlide = 0;
     let iw: number = container.current.offsetWidth;
 
-    function slideAnimation(e: any) {
+    const dotAnim = gsap.timeline({ paused: true });
+
+    dotAnim.to(
+      '.dot',
+      {
+        stagger: { each: 1, yoyo: true, repeat: 1 },
+        scale: 2.1,
+        rotation: 0.1,
+        ease: 'none',
+      },
+      0.5
+    );
+
+    function slideAnimation(this: any, e: any) {
       oldSlide = activeSlide;
 
       if (gsap.isTweening(container.current)) {
         return;
+      } else if (this.className === 'dot') {
+        activeSlide = this.index;
       } else {
         activeSlide = e.deltaY > 0 ? (activeSlide += 1) : (activeSlide -= 1);
       }
