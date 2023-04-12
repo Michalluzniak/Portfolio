@@ -16,6 +16,7 @@ module.exports = {
       },
       gridTemplateRows: {
         layout: '5rem 1fr 5rem',
+        section: '10rem 1fr 15rem',
       },
       colors: {
         'soft-white': '#F6F4F3',
@@ -25,6 +26,7 @@ module.exports = {
 
     fontFamily: {
       main: 'Montserrat , sans-serif ',
+      second: 'Open Sans, sans-serif',
     },
   },
   plugins: [],
