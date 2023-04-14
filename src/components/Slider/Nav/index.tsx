@@ -3,7 +3,7 @@ import { NavElements } from './NavElements';
 
 const Nav = ({ navRef }: any) => {
   return (
-    <nav ref={navRef} className="flex justify-between items-center h-20 w-full px-24 text-soft-white font-main">
+    <nav ref={navRef} className="h-20 w-full text-soft-white font-main absolute bottom-0 left-0 ">
       <NavElements />
     </nav>
   );

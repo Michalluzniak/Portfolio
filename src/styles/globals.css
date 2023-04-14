@@ -13,7 +13,7 @@ body {
   background-color: var(--background);
 }
 
-#about-me-section {
+#sections-container {
   background-image: url('../assets/cherry-bg.png');
   background-position: center;
   background-size: contain;
@@ -30,12 +30,4 @@ body {
 .sections {
   position: relative;
   float: left;
-}
-
-.linear-gradient {
-  color: white;
-  /* background-clip: text; */
-  /* text-fill-color: transparent; */
-  /* -webkit-background-clip: text; */
-  /* -webkit-text-fill-color: transparent; */
 }
