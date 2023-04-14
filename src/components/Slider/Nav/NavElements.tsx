@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const NavElements = () => {
-  const navSections = ['about', 'skills', 'work', 'contact'];
+  const navSections = ['about', 'stack', 'work', 'contact'];
   return (
     <svg xmlns="http://www.w3.org/2000/svg" height="100%" width="100% ">
       <defs>

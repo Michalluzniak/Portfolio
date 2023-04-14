@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
 
-export const useSliderAnimation = (container: React.RefObject<HTMLDivElement>, navRef: any) => {
+export const useSliderAnimation = (
+  container: React.RefObject<HTMLDivElement>,
+  navRef: any,
+  isAnimationsLoaded: boolean
+) => {
   //
   useEffect(() => {
     //
@@ -17,22 +21,18 @@ export const useSliderAnimation = (container: React.RefObject<HTMLDivElement>, n
     let offsets: any = [];
     let oldSlide = 0;
     let activeSlide = 0;
-    let scrollGate = true;
     const navColors = ['#020202', '#F6F4F3', '#020202', '#F6F4F3'];
     const navParagraphsColors = ['#F6F4F3', '#020202', '#F6F4F3', '#020202'];
 
     let iw: number = container.current.offsetWidth;
-
-    setTimeout(() => {
-      scrollGate = false;
-    }, 7500);
 
     // set progress bar to start from 0.1 not 0
     gsap.to('.mask', { scaleX: 0.15, duration: 0 });
 
     // Main slide animation logic - scroll / nav
     const slideAnimation = (e: any) => {
-      // if (scrollGate === true) return;
+      console.log(isAnimationsLoaded);
+      if (isAnimationsLoaded === false) return;
 
       oldSlide = activeSlide;
 
@@ -55,7 +55,10 @@ export const useSliderAnimation = (container: React.RefObject<HTMLDivElement>, n
         return;
       }
 
-      // const scaleX = (activeSlide + 1) / sections.length;
+      gsap.to('.scroll-icon-container', {
+        opacity: 0,
+      });
+
       let scaleX;
       switch (activeSlide) {
         case 0:
@@ -130,7 +133,7 @@ export const useSliderAnimation = (container: React.RefObject<HTMLDivElement>, n
 
     window.addEventListener('wheel', slideAnimation);
     window.addEventListener('resize', sizeIt);
-  }, [container, navRef]);
+  }, [container, navRef, isAnimationsLoaded]);
 };
 
 // if (activeSlide > oldSlide) {

@@ -1,15 +1,15 @@
 import Image from 'next/image';
 import profilePhoto from '../../../assets/profile.png';
 import { useAboutMeAnimations } from '../hooks/useAboutMeAnimations';
-import { ScrollIcon } from './ScrollIcon';
+import { ScrollIcon } from '../../../components/Slider/ScrollIcon';
 
-const AboutMe = () => {
+const AboutMe = (animationLoadingHandler: any) => {
   //
-  useAboutMeAnimations();
+  useAboutMeAnimations(animationLoadingHandler);
 
   return (
     <section className="grid grid-cols-3 grid-rows-section h-full w-full shrink-0 sections " id="about-me-section">
-      <div className="col-start-1 row-start-1 text-soft-white ms-24 self-center hero-name font-semibold">
+      <div className="col-start-1 row-start-1 text-soft-white ms-24 self-center hero-name font-semibold translate-x-[-150%]">
         <h1 className="text-4xl font-main">Michał Łuźniak</h1>
         <h2 className="text-xl font-second ms-0.5">Front-End Developer</h2>
       </div>
