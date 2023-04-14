@@ -19,7 +19,7 @@ export const useSliderAnimation = (container: React.RefObject<HTMLDivElement>, n
     let activeSlide = 0;
     let scrollGate = true;
     const navColors = ['#020202', '#F6F4F3', '#020202', '#F6F4F3'];
-    const navParagraphsColors = ['#F6F4F3', '#020202', '#020202', '#F6F4F3'];
+    const navParagraphsColors = ['#F6F4F3', '#020202', '#F6F4F3', '#020202'];
 
     let iw: number = container.current.offsetWidth;
 
@@ -28,7 +28,7 @@ export const useSliderAnimation = (container: React.RefObject<HTMLDivElement>, n
     }, 7500);
 
     // set progress bar to start from 0.1 not 0
-    gsap.to('.mask', { scaleX: 0.1, duration: 0 });
+    gsap.to('.mask', { scaleX: 0.15, duration: 0 });
 
     // Main slide animation logic - scroll / nav
     const slideAnimation = (e: any) => {
@@ -55,11 +55,11 @@ export const useSliderAnimation = (container: React.RefObject<HTMLDivElement>, n
         return;
       }
 
-      // const scaleX = activeSlide / (sections.length - 1);
+      // const scaleX = (activeSlide + 1) / sections.length;
       let scaleX;
       switch (activeSlide) {
         case 0:
-          scaleX = 0.1;
+          scaleX = 0.15;
           break;
         case 1:
           scaleX = 0.4;
@@ -93,6 +93,16 @@ export const useSliderAnimation = (container: React.RefObject<HTMLDivElement>, n
         color: (e) => {
           //function to fix bug where text was visible under the mask
           if (e === 0) return '#020202';
+          if (activeSlide === navParagraphs.length - 1 || activeSlide >= 2) return '#020202';
+          else return navParagraphsColors[activeSlide];
+        },
+        duration: 1,
+      });
+
+      gsap.to('.nav-lines', {
+        backgroundColor: (e) => {
+          //function to fix bug where text was visible under the mask
+
           if (activeSlide === navParagraphs.length - 1) return '#020202';
           else return navParagraphsColors[activeSlide];
         },
