@@ -72,41 +72,34 @@ export const useSliderAnimation = (container: React.RefObject<HTMLDivElement>, n
           break;
       }
 
-      if (activeSlide > oldSlide) {
-        gsap
-          .timeline()
-          .to('.nav-bg', { fill: navColors[activeSlide], duration: 0 })
-          .to('.nav-bg', { translateX: '100%', duration: 0, fill: navColors[activeSlide] })
-          .to('.nav-bg', { translateX: '0%', duration: dur, ease: 'none' })
-          .to(navRef.current, { background: navColors[activeSlide], duration: 0 })
-          .to('.nav-bg', { translateX: '100%', duration: 0, fill: navColors[activeSlide] });
-      } else {
-        gsap
-          .timeline()
-          .to('.nav-bg', { translateX: '0%', duration: 0 })
-          .to(navRef.current, { background: navColors[activeSlide], duration: 0 })
-          .to('.nav-bg', { translateX: '100%', duration: dur, fill: navColors[oldSlide], ease: 'none' })
-          .to('.nav-bg', { translateX: '0%', duration: 0, fill: navColors[activeSlide] });
-      }
-
       gsap.to('.nav-paragraph', {
-        color: (e) => {
+        color: (item) => {
           //function to fix bug where text was visible under the mask
-          if (e === 0) return '#020202';
-          if (activeSlide === navParagraphs.length - 1 || activeSlide >= 2) return '#020202';
+          if (item === 0) return '#020202';
+          if (activeSlide === navParagraphs.length - 1 || (activeSlide >= 2 && item !== 3)) return '#020202';
           else return navParagraphsColors[activeSlide];
         },
-        duration: 1,
+        duration: dur,
       });
 
       gsap.to('.nav-lines', {
-        backgroundColor: (e) => {
+        backgroundColor: (item) => {
           //function to fix bug where text was visible under the mask
-
           if (activeSlide === navParagraphs.length - 1) return '#020202';
           else return navParagraphsColors[activeSlide];
         },
-        duration: 1,
+        duration: dur,
+      });
+
+      gsap.to('.scroll-icon, .scroll-icon-description', {
+        color: navParagraphsColors[activeSlide],
+        backgroundColor: (item) => {
+          console.log(item);
+          return item === 0 ? navColors[activeSlide] : '';
+        },
+        borderRadius: 100,
+        border: 'none',
+        duration: dur,
       });
 
       gsap.to('.mask', { scaleX, duration: dur, ease: 'none' });
@@ -139,3 +132,20 @@ export const useSliderAnimation = (container: React.RefObject<HTMLDivElement>, n
     window.addEventListener('resize', sizeIt);
   }, [container, navRef]);
 };
+
+// if (activeSlide > oldSlide) {
+//   gsap
+//     .timeline()
+//     .to('.nav-bg', { fill: navColors[activeSlide], duration: 0 })
+//     .to('.nav-bg', { translateX: '100%', duration: 0, fill: navColors[activeSlide] })
+//     .to('.nav-bg', { translateX: '0%', duration: dur, ease: 'none' })
+//     .to(navRef.current, { background: navColors[activeSlide], duration: 0 })
+//     .to('.nav-bg', { translateX: '100%', duration: 0, fill: navColors[activeSlide] });
+// } else {
+//   gsap
+//     .timeline()
+//     .to('.nav-bg', { translateX: '0%', duration: 0 })
+//     .to(navRef.current, { background: navColors[activeSlide], duration: 0 })
+//     .to('.nav-bg', { translateX: '100%', duration: dur, fill: navColors[oldSlide], ease: 'none' })
+//     .to('.nav-bg', { translateX: '0%', duration: 0, fill: navColors[activeSlide] });
+// }

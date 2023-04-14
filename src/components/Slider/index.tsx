@@ -1,8 +1,8 @@
 import AboutMe from '@/modules/Sections/AboutMe';
+import { ScrollIcon } from '@/modules/Sections/AboutMe/ScrollIcon';
 import Skills from '@/modules/Sections/Skills';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
-import profilePhoto from '../../assets/profile.png';
 import { useSliderAnimation } from './hooks/useSliderAnimation';
 import Nav from './Nav';
 
@@ -17,7 +17,7 @@ const Slider = () => {
       className="flex flex-col bg-dark col-start-2 row-start-2 border border-soft-white overflow-hidden relative"
       id="sections-container"
     >
-      <main ref={sectionRef} className="flex grow relative flex-row w-full">
+      <main ref={sectionRef} className="flex grow  flex-row w-full">
         <AboutMe />
         <Skills />
         <section className="w-full h-full bg-dark  shrink-0 sections"></section>
@@ -28,7 +28,7 @@ const Slider = () => {
         {/* Section CONTACT */}
       </main>
       {/* NAV*/}
-
+      <ScrollIcon />
       <Nav navRef={navRef}></Nav>
     </div>
   );
