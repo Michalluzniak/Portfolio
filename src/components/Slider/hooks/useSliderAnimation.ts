@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
+import { skillsAnimations } from '@/modules/Sections/Skills/skillsAnimation';
 
 export const useSliderAnimation = (
   container: React.RefObject<HTMLDivElement>,
@@ -108,6 +109,10 @@ export const useSliderAnimation = (
       gsap.to('.mask', { scaleX, duration: dur, ease: 'none' });
 
       gsap.to(container.current, { x: offsets[activeSlide], duration: dur, ease: 'none' });
+
+      if (activeSlide === 1) {
+        skillsAnimations();
+      }
     };
 
     // set sections offset to get accurate scroll length
