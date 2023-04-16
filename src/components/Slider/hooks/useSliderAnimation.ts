@@ -32,15 +32,13 @@ export const useSliderAnimation = (
 
     // Main slide animation logic - scroll / nav
     const slideAnimation = (e: any) => {
-      console.log(isAnimationsLoaded);
-      if (isAnimationsLoaded === false) return;
+      // if (isAnimationsLoaded === false) return;
 
       oldSlide = activeSlide;
 
       if (gsap.isTweening(container.current)) {
         return;
       } else if (e.target.classList?.contains('nav-paragraph')) {
-        console.log(e.target);
         activeSlide = navParagraphs.indexOf(e.target);
       } else if (e.target.classList?.contains('nav-paragraph-progress')) {
         console.log(e.target);
@@ -98,7 +96,6 @@ export const useSliderAnimation = (
       gsap.to('.scroll-icon, .scroll-icon-description', {
         color: navParagraphsColors[activeSlide],
         backgroundColor: (item) => {
-          console.log(item);
           return item === 0 ? navColors[activeSlide] : '';
         },
         borderRadius: 100,

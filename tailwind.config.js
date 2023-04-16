@@ -17,13 +17,14 @@ module.exports = {
       },
       colors: {
         'soft-white': '#F6F4F3',
-        dark: '#020202',
+        dark: '#161316',
       },
     },
 
     fontFamily: {
       main: 'Montserrat , sans-serif ',
       second: 'Open Sans, sans-serif',
+      logos: 'Oswald, sans-serif',
     },
   },
   plugins: [],

@@ -35,7 +35,7 @@ const stackArray = [
 const Skills = () => {
   return (
     <section className="grid grid-cols-[5rem_1fr] grid-rows-3 w-full h-full shrink-0 sections text-main bg-soft-white">
-      <p className="text-dark flex flex-col uppercase text-3xl self-center col-start-1 row-start-2 ms-6 font-bold">
+      <p className="text-dark flex flex-col uppercase text-3xl self-center item-center col-start-1 row-start-2 ms-6 font-bold">
         <span>S</span>
         <span>t</span>
         <span>a</span>
@@ -46,8 +46,8 @@ const Skills = () => {
       <div className="col-start-2 row-start-1 row-span-3 justify-self-center self-center grid grid-cols-7 grid-rows-2 gap-6">
         {stackArray.map((skill, index) => (
           <div
-            key="skill"
-            className={`flex flex-col justify-center items-center shrink-0 text-sm text-dark w-18 uppercase skill`}
+            key={index}
+            className={`flex flex-col justify-center items-center shrink-0  text-sm text-dark w-18 uppercase skill`}
           >
             <p className="text-5xl text-[#9c0d38] mb-4">{skill.icon}</p>
             <p className="font-semibold">{skill.name}</p>

@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { useSliderAnimation } from './hooks/useSliderAnimation';
 import Nav from './Nav';
+import Work from '@/modules/Sections/Work';
 
 const Slider = () => {
   const [isAnimationsLoaded, setIsAnimationsLoaded] = useState(false);
@@ -35,7 +36,7 @@ const Slider = () => {
       <main ref={sectionRef} className="flex grow  flex-row w-full">
         <AboutMe animationLoadingHandler={animationLoadingHandler} />
         <Skills />
-        <section className="w-full h-full bg-dark  shrink-0 sections"></section>
+        <Work />
         <section className="w-full h-full bg-soft-white shrink-0 sections"></section>
 
         {/* Section SKILLS */}
