@@ -78,7 +78,7 @@ export const useSliderAnimation = (
         color: (item) => {
           //function to fix bug where text was visible under the mask
           if (item === 0) return '#020202';
-          if (activeSlide === 2 && oldSlide === 3 && item === 2) return '#020202';
+          if (activeSlide === 2 && oldSlide === 3 && (item === 2 || 1)) return '#020202';
           if (activeSlide === navParagraphs.length - 1 || (activeSlide > 2 && item !== 3)) return '#020202';
           else return navParagraphsColors[activeSlide];
         },

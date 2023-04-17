@@ -39,12 +39,8 @@ const Slider = () => {
         <Skills />
         <Work />
         <Contact />
-
-        {/* Section SKILLS */}
-        {/* Section WORK */}
-        {/* Section CONTACT */}
       </main>
-      {/* NAV*/}
+
       <ScrollIcon />
       <Nav navRef={navRef}></Nav>
     </div>
