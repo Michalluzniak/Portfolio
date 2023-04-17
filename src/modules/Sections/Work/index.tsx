@@ -1,10 +1,9 @@
-import Image from 'next/image';
 import React, { useState } from 'react';
-
 import WeatherAppLogo from '../../../assets/weaher.jpg';
 import ColorTilesLogo from '../../../assets/colors.png';
 import RmLogo from '../../../assets/rick-and-morty.jpg';
 import Project from './Project';
+import VerticalText from '@/components/VerticalText';
 
 const projects = ['admin dashboard', 'color tiles', 'rick & morty character list', 'weather app'];
 
@@ -14,12 +13,8 @@ const Work = () => {
 
   return (
     <section className="work-section grid grid-cols-[5rem_2fr_1fr] w-full h-full bg-dark shrink-0 sections text-main">
-      <p className="text-soft-white flex flex-col uppercase text-3xl self-center items-center col-start-1 font-bold">
-        <span>w</span>
-        <span>o</span>
-        <span>r</span>
-        <span>k</span>
-      </p>
+      <VerticalText text="work" color="text-soft-white" />
+
       {currentProject !== 0 && (
         <div
           className="col-start-2 h-1/2 w-8/12 justify-self-center self-center relative font-logos"
@@ -55,12 +50,12 @@ const Work = () => {
           {currentProject === 3 && (
             <Project
               title="Rick & Morty"
-              titleDescription="character list"
+              titleDescription="characters list"
               hoverDescription="Rick & Morty is an app where you can search for any character from the series."
               image={RmLogo}
               isProjectWindowHovered={isProjectWindowHovered}
-              repoUrl="https://github.com/Michalluzniak/Rick-and-Morty-Character-List"
-              liveUrl="https://michalluzniak.github.io/Rick-and-Morty-Character-List/"
+              repoUrl="https://github.com/Michalluzniak/Rick-and-Morty-Characters-List"
+              liveUrl="https://michalluzniak.github.io/Rick-and-Morty-Characters-List/"
             />
           )}
 

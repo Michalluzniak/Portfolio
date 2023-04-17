@@ -1,3 +1,4 @@
+import VerticalText from '@/components/VerticalText';
 import React from 'react';
 import { AiFillHtml5 } from 'react-icons/ai';
 import { DiCss3, DiSass } from 'react-icons/di';
@@ -34,16 +35,10 @@ const stackArray = [
 
 const Skills = () => {
   return (
-    <section className="grid grid-cols-[5rem_1fr_5rem] grid-rows-3 w-full h-full shrink-0 sections text-main bg-soft-white">
-      <p className="text-dark flex flex-col uppercase text-3xl self-center item-center col-start-1 row-start-2 ms-6 font-bold">
-        <span>S</span>
-        <span>t</span>
-        <span>a</span>
-        <span>c</span>
-        <span>k</span>
-      </p>
+    <section className="grid grid-cols-[5rem_1fr_5rem] w-full h-full shrink-0 sections text-main bg-soft-white">
+      <VerticalText text="stack" color="text-dark" />
 
-      <div className="col-start-2 row-start-1 row-span-3 justify-self-center self-center grid grid-cols-7 grid-rows-2 gap-6">
+      <div className="col-start-2 justify-self-center self-center grid grid-cols-7 grid-rows-2 gap-6">
         {stackArray.map((skill, index) => (
           <div
             key={index}

@@ -78,7 +78,8 @@ export const useSliderAnimation = (
         color: (item) => {
           //function to fix bug where text was visible under the mask
           if (item === 0) return '#020202';
-          if (activeSlide === navParagraphs.length - 1 || (activeSlide >= 2 && item !== 3)) return '#020202';
+          if (activeSlide === 2 && oldSlide === 3 && item === 2) return '#020202';
+          if (activeSlide === navParagraphs.length - 1 || (activeSlide > 2 && item !== 3)) return '#020202';
           else return navParagraphsColors[activeSlide];
         },
         duration: dur,
@@ -103,7 +104,18 @@ export const useSliderAnimation = (
         duration: dur,
       });
 
-      gsap.to('.mask', { scaleX, duration: dur, ease: 'none' });
+      gsap
+        .timeline()
+        .to('.mask', { scaleX, duration: dur, ease: 'none' })
+        .to('.nav-paragraph', {
+          color: (item) => {
+            if (activeSlide >= 2 && item !== 3) {
+              return '#020202';
+            } else {
+              return 'auto';
+            }
+          },
+        });
 
       gsap.to(container.current, { x: offsets[activeSlide], duration: dur, ease: 'none' });
 
@@ -137,20 +149,3 @@ export const useSliderAnimation = (
     window.addEventListener('resize', sizeIt);
   }, [container, navRef, isAnimationsLoaded]);
 };
-
-// if (activeSlide > oldSlide) {
-//   gsap
-//     .timeline()
-//     .to('.nav-bg', { fill: navColors[activeSlide], duration: 0 })
-//     .to('.nav-bg', { translateX: '100%', duration: 0, fill: navColors[activeSlide] })
-//     .to('.nav-bg', { translateX: '0%', duration: dur, ease: 'none' })
-//     .to(navRef.current, { background: navColors[activeSlide], duration: 0 })
-//     .to('.nav-bg', { translateX: '100%', duration: 0, fill: navColors[activeSlide] });
-// } else {
-//   gsap
-//     .timeline()
-//     .to('.nav-bg', { translateX: '0%', duration: 0 })
-//     .to(navRef.current, { background: navColors[activeSlide], duration: 0 })
-//     .to('.nav-bg', { translateX: '100%', duration: dur, fill: navColors[oldSlide], ease: 'none' })
-//     .to('.nav-bg', { translateX: '0%', duration: 0, fill: navColors[activeSlide] });
-// }
