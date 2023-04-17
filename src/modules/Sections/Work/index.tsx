@@ -4,11 +4,13 @@ import React, { useState } from 'react';
 import WeatherAppLogo from '../../../assets/weaher.jpg';
 import ColorTilesLogo from '../../../assets/colors.png';
 import RmLogo from '../../../assets/rick-and-morty.jpg';
+import Project from './Project';
 
-const projects = ['weather app', 'rick & morty character list', 'color tiles', 'admin dashboard'];
+const projects = ['admin dashboard', 'color tiles', 'rick & morty character list', 'weather app'];
 
 const Work = () => {
   const [currentProject, setCurrentProject] = useState<number>(0);
+  const [isProjectWindowHovered, setIsProjectWindowHovered] = useState<boolean>(false);
 
   return (
     <section className="work-section grid grid-cols-[5rem_2fr_1fr] w-full h-full bg-dark shrink-0 sections text-main">
@@ -21,52 +23,82 @@ const Work = () => {
       {currentProject !== 0 && (
         <div
           className="col-start-2 h-1/2 w-8/12 justify-self-center self-center relative font-logos"
-          onMouseLeave={() => setCurrentProject(0)}
+          onMouseEnter={() => setIsProjectWindowHovered(true)}
+          onMouseLeave={() => {
+            setIsProjectWindowHovered(false);
+          }}
         >
           {currentProject === 1 && (
-            <div className="project1 flex items-center justify-center flex-col relative w-full h-full ">
-              <div
-                className="w-full h-full absolute bg-cover bg-red-200 opacity-40"
-                style={{ backgroundImage: `url(${WeatherAppLogo.src})` }}
-              />
-              <p className="text-soft-white z-20 text-8xl uppercase">atmosphere</p>
-              <p className="text-soft-white z-20 text-2xl uppercase">7 days weather forecast app</p>
-            </div>
+            // <Project
+            //   title="atmosphere"
+            //   titleDescription="7 days weather forecast app"
+            //   hoverDescription="Atmosphere is a 7 days weather forecast around the world with local date."
+            //   image={WeatherAppLogo}
+            //   isProjectWindowHovered={isProjectWindowHovered}
+            //   repoUrl="https://github.com/Michalluzniak/Weather_App"
+            //   liveUrl="#"
+            // />
+            <div></div>
           )}
+
           {currentProject === 2 && (
-            <div className="project2 flex items-center justify-center flex-col relative w-full h-full ">
-              <div
-                className="w-full h-full absolute bg-cover bg-red-200 opacity-40"
-                style={{ backgroundImage: `url(${ColorTilesLogo.src})` }}
-              />
-              <p className="text-soft-white z-20 text-8xl uppercase">Color tiles</p>
-              <p className="text-soft-white z-20 text-2xl uppercase">store your favourite colors</p>
-            </div>
+            <Project
+              title="Color tiles"
+              titleDescription="store your favourite colors"
+              hoverDescription="Color Tiles is an application where you can store your favourite colors in hexadecimal format and come back to them later."
+              image={ColorTilesLogo}
+              isProjectWindowHovered={isProjectWindowHovered}
+              repoUrl="https://github.com/Michalluzniak/Color-Tiles"
+              liveUrl="https://michalluzniak.github.io/Color-Tiles/"
+            />
           )}
           {currentProject === 3 && (
-            <div className="project3 flex items-center justify-center flex-col relative w-full h-full ">
-              <div
-                className="w-full h-full absolute bg-cover bg-red-200 opacity-40"
-                style={{ backgroundImage: `url(${RmLogo.src})` }}
-              />
-              <p className="text-soft-white z-20 text-8xl uppercase">Rick & Morty</p>
-              <p className="text-soft-white z-20 text-2xl uppercase">character list</p>
-            </div>
+            <Project
+              title="Rick & Morty"
+              titleDescription="character list"
+              hoverDescription="Rick & Morty is an app where you can search for any character from the series."
+              image={RmLogo}
+              isProjectWindowHovered={isProjectWindowHovered}
+              repoUrl="https://github.com/Michalluzniak/Rick-and-Morty-Character-List"
+              liveUrl="https://michalluzniak.github.io/Rick-and-Morty-Character-List/"
+            />
           )}
-          {/* <div className="project4"></div> */}
+
+          {currentProject === 4 && (
+            <Project
+              title="atmosphere"
+              titleDescription="7 days weather forecast app"
+              hoverDescription="Atmosphere is a 7 days weather forecast around the world with local date."
+              image={WeatherAppLogo}
+              isProjectWindowHovered={isProjectWindowHovered}
+              repoUrl="https://github.com/Michalluzniak/Weather_App"
+              liveUrl="#"
+            />
+          )}
         </div>
       )}
-      <div className="flex flex-col col-start-3 h-1/2 w-8/12 justify-self-end self-center pr-16">
+      <div className="flex flex-col col-start-3 h-1/3 w-6/12 justify-self-end self-center pr-8">
         {projects.map((project, index) => {
           return (
             <div
               key={project}
-              className={`flex ${
-                index !== projects.length - 1 ? 'border-b border-soft-white' : ''
-              } h-1/4 items-center cursor-pointer`}
-              onMouseEnter={() => setCurrentProject(index + 1)}
+              className={`flex duration-500 ${
+                index !== projects.length - 1
+                  ? currentProject === index + 1
+                    ? 'border-b border-[#9c0d38]'
+                    : 'border-b border-soft-white'
+                  : ''
+              } h-1/4 items-center cursor-pointer relative text-soft-white`}
+              onMouseEnter={() => {
+                setCurrentProject(index + 1);
+              }}
             >
-              <p className={`uppercase text-soft-white  w-10/12 text-2xl`}>{project}</p>
+              <div
+                className={`absolute h-1 self-end  ${
+                  currentProject === index + 1 ? 'w-full' : 'w-0'
+                }  duration-500 bg-[#9c0d38]`}
+              ></div>
+              <p className={`uppercase  duration-500 z-50 w-8/12 text-base`}>{project}</p>
             </div>
           );
         })}

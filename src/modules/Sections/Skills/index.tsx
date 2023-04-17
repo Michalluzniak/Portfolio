@@ -34,7 +34,7 @@ const stackArray = [
 
 const Skills = () => {
   return (
-    <section className="grid grid-cols-[5rem_1fr] grid-rows-3 w-full h-full shrink-0 sections text-main bg-soft-white">
+    <section className="grid grid-cols-[5rem_1fr_5rem] grid-rows-3 w-full h-full shrink-0 sections text-main bg-soft-white">
       <p className="text-dark flex flex-col uppercase text-3xl self-center item-center col-start-1 row-start-2 ms-6 font-bold">
         <span>S</span>
         <span>t</span>
