@@ -10,6 +10,7 @@ import { AiFillLinkedin } from 'react-icons/ai';
 import { AiFillGithub } from 'react-icons/ai';
 
 import Slider from '@/components/Slider';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -22,9 +23,15 @@ export default function Home() {
         id="left-column"
       >
         {/* <Image src={bgLeft} fill alt="background cherry-blossom photo"></Image> */}
-        <SiGmail className="text-soft-white text-3xl my-4" />
-        <AiFillLinkedin className="text-soft-white text-4xl my-4" />
-        <AiFillGithub className="text-soft-white text-4xl my-4" />
+        <Link href="mailto:michal.luzniak8@gmail.com">
+          <SiGmail className="text-soft-white text-3xl my-4" />
+        </Link>
+        <a target="_blank" href="https://www.linkedin.com/in/michalluzniak/">
+          <AiFillLinkedin className="text-soft-white text-4xl my-4" />
+        </a>
+        <a target="_blank" href="#">
+          <AiFillGithub className="text-soft-white text-4xl my-4" />
+        </a>
       </div>
       <Slider></Slider>
     </div>
