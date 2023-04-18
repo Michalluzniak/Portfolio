@@ -14,14 +14,33 @@ body {
 }
 
 #sections-container {
-  /* background-image: url('../assets/cherry-bg.png'); */
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
+#top-row {
+  background-image: url('/background/cherry-top.png');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+#right-column {
+  background-image: url('/background/cherry-right.png');
+  background-position: auto;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+#bottom-row {
+  background-image: url('/background/cherry-bottom.png');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
 #left-column {
-  background-image: url('../assets/cherry-left.png');
+  background-image: url('/background/cherry-left.png');
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;

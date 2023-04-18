@@ -4,6 +4,7 @@ import Skills from '@/modules/Sections/Skills';
 import React, { useEffect, useRef, useState } from 'react';
 
 import { useSliderAnimation } from './hooks/useSliderAnimation';
+
 import Nav from './Nav';
 import Work from '@/modules/Sections/Work';
 import Contact from '@/modules/Sections/Contact';
