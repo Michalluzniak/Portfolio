@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { skillsAnimations } from '@/modules/Sections/Skills/skillsAnimation';
 
@@ -7,6 +7,7 @@ export const useSliderAnimation = (
   navRef: any,
   isAnimationsLoaded: boolean
 ) => {
+  const [clickedSection, setClickedSection] = useState<any>();
   //
   useEffect(() => {
     //
@@ -40,11 +41,69 @@ export const useSliderAnimation = (
         return;
       } else if (e.target.classList?.contains('nav-paragraph')) {
         activeSlide = navParagraphs.indexOf(e.target);
+        if (activeSlide > 1)
+          gsap.to(sections[activeSlide + 1], {
+            x: offsets[activeSlide],
+            duration: 0,
+          });
+        gsap.to(sections[activeSlide], {
+          x: offsets[activeSlide],
+          duration: dur,
+        });
       } else if (e.target.classList?.contains('nav-paragraph-progress')) {
-        console.log(e.target);
         activeSlide = navParagraphsProgress.indexOf(e.target);
+
+        // gsap.to(sections[oldSlide], {
+        //   x: offsets[activeSlide],
+        //   duration: 1,
+        // });
+        console.log(oldSlide, navParagraphsProgress.indexOf(e.target));
+        if (oldSlide - navParagraphsProgress.indexOf(e.target) >= 2) {
+          gsap.to(sections[oldSlide - 1], {
+            x: offsets[activeSlide],
+            duration: 0,
+          });
+          console.log('lalal');
+        }
+
+        if (activeSlide - oldSlide === -3) {
+          gsap.to(sections[activeSlide + 1], {
+            x: offsets[activeSlide],
+          });
+        }
+
+        gsap.to(sections[activeSlide], {
+          x: offsets[activeSlide],
+          duration: 0,
+        });
+
+        gsap.to(sections[oldSlide], {
+          x: offsets[oldSlide - 1],
+          duration: dur,
+        });
+
+        //
       } else {
-        activeSlide += e.deltaY > 0 ? 1 : -1;
+        if (e.deltaY > 0) {
+          activeSlide++;
+
+          gsap.to(sections[activeSlide], {
+            x: offsets[activeSlide],
+          });
+        } else {
+          activeSlide--;
+
+          gsap.to(sections[activeSlide], {
+            x: offsets[activeSlide],
+            duration: 0,
+          });
+
+          gsap.to(sections[oldSlide], {
+            x: offsets[activeSlide],
+          });
+        }
+        // gsap.to(container.current, { x: offsets[activeSlide], duration: dur, ease: 'none' });
+        gsap.to;
       }
 
       activeSlide = Math.max(0, activeSlide);
@@ -117,7 +176,7 @@ export const useSliderAnimation = (
           },
         });
 
-      gsap.to(container.current, { x: offsets[activeSlide], duration: dur, ease: 'none' });
+      // gsap.to(container.current, { x: offsets[activeSlide], duration: dur, ease: 'none' });
 
       if (activeSlide === 1) {
         skillsAnimations();
@@ -136,16 +195,72 @@ export const useSliderAnimation = (
       for (let i = 0; i < sections.length; i++) {
         offsets.push(-sections[i].offsetLeft);
       }
-      gsap.set(container.current, { x: offsets[activeSlide] });
+      // gsap.set(container.current, { x: offsets[activeSlide] });
     };
 
     sizeIt();
 
     // add click event listener to navigation paragraphs
     navParagraphsProgress.forEach((element: any) => element.addEventListener('click', slideAnimation));
-    navParagraphs.forEach((element: any) => element.addEventListener('click', slideAnimation));
+    navParagraphs.forEach((element: any) =>
+      element.addEventListener('click', (e: any) => {
+        slideAnimation(e);
+        setClickedSection(e.target.innerText);
+      })
+    );
 
     window.addEventListener('wheel', slideAnimation);
     window.addEventListener('resize', sizeIt);
   }, [container, navRef, isAnimationsLoaded]);
 };
+
+// if (gsap.isTweening(container.current)) {
+//   return;
+// } else if (e.target.classList?.contains('nav-paragraph')) {
+//   activeSlide = navParagraphs.indexOf(e.target);
+//   gsap.to(sections[activeSlide === sections.length ? sections.length - 1 : activeSlide], {
+//     x: offsets[activeSlide],
+//   });
+//   console.log(oldSlide);
+// } else if (e.target.classList?.contains('nav-paragraph-progress')) {
+//   console.log(e.target);
+
+//   // gsap.to(sections[oldSlide], {
+//   //   x: offsets[4],
+//   // });
+
+//   console.log(oldSlide === navParagraphsProgress.indexOf(e.target));
+
+//   activeSlide = navParagraphsProgress.indexOf(e.target);
+
+//   if (oldSlide > navParagraphsProgress.indexOf(e.target)) {
+//     gsap.to(sections[oldSlide], {
+//       x: offsets[navParagraphsProgress.indexOf(e.target)],
+//     });
+//   }
+
+//   gsap
+//     .timeline()
+//     .to(sections[activeSlide], {
+//       x: offsets[activeSlide],
+//       duration: 0,
+//     })
+//     .to(sections[oldSlide], {
+//       x: offsets[activeSlide],
+//     });
+//   //
+// } else {
+//   if (e.deltaY > 0) {
+//     activeSlide += e.deltaY > 0 ? 1 : -1;
+//     gsap.to(sections[activeSlide === sections.length ? sections.length - 1 : activeSlide], {
+//       x: offsets[activeSlide],
+//     });
+//   } else {
+//     activeSlide += e.deltaY > 0 ? 1 : -1;
+//     gsap.to(sections[oldSlide], {
+//       x: offsets[activeSlide],
+//     });
+//   }
+//   // gsap.to(container.current, { x: offsets[activeSlide], duration: dur, ease: 'none' });
+//   gsap.to;
+// }

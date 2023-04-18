@@ -12,7 +12,7 @@ const Work = () => {
   const [isProjectWindowHovered, setIsProjectWindowHovered] = useState<boolean>(false);
 
   return (
-    <section className="work-section grid grid-cols-[5rem_2fr_1fr] w-full h-full bg-dark shrink-0 sections text-main">
+    <section className="work-section grid grid-cols-[5rem_2fr_1fr] w-full h-full bg-dark shrink-0 sections text-main ">
       <VerticalText text="work" color="text-soft-white" />
 
       {currentProject !== 0 && (

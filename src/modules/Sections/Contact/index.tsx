@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   //
-  console.log(process.env.NEXT_PUBLIC_EMAILJS_API_KEY);
+
   const submitForm = (e: any) => {
     e.preventDefault();
     emailjs.sendForm('service_8geokcj', 'template_y2rivbi', e.target, process.env.NEXT_PUBLIC_EMAILJS_API_KEY).then(

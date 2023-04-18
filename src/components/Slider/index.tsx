@@ -24,8 +24,6 @@ const Slider = () => {
     setIsAnimationsLoaded(true);
   };
 
-  console.log(isAnimationsLoaded);
-
   return (
     <div
       className="flex flex-col bg-dark col-start-2 row-start-2 border border-soft-white overflow-hidden relative"

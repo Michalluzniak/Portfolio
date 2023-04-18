@@ -35,7 +35,7 @@ const stackArray = [
 
 const Skills = () => {
   return (
-    <section className="grid grid-cols-[5rem_1fr_5rem] w-full h-full shrink-0 sections text-main bg-soft-white">
+    <section className="grid grid-cols-[5rem_1fr_5rem] w-full h-full shrink-0 sections text-main bg-soft-white ">
       <VerticalText text="stack" color="text-dark" />
 
       <div className="col-start-2 justify-self-center self-center grid grid-cols-7 grid-rows-2 gap-6">
