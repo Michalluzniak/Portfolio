@@ -18,7 +18,7 @@ export const useSliderAnimation = (
     let sections: HTMLDivElement[] = gsap.utils.toArray('.sections');
     const navParagraphs = gsap.utils.toArray('.nav-paragraph');
     const navParagraphsProgress = gsap.utils.toArray('.nav-paragraph-progress');
-
+    let scrolling = false;
     let dur = 0.5;
     let offsets: any = [];
     let oldSlide = 0;
@@ -78,13 +78,18 @@ export const useSliderAnimation = (
 
         //
       } else {
-        if (e.deltaY > 0) {
+        if (scrolling) return;
+
+        if (e.deltaY > 0 && activeSlide !== sections.length - 1) {
+          scrolling = true;
           activeSlide++;
+          // activeSlide += e.deltaY > 0 ? 1 : -1;
 
           gsap.to(sections[activeSlide], {
             x: offsets[activeSlide],
           });
-        } else {
+        } else if (e.deltaY < 0 && activeSlide !== 0) {
+          scrolling = true;
           activeSlide--;
 
           gsap.to(sections[activeSlide], {
@@ -96,6 +101,10 @@ export const useSliderAnimation = (
             x: offsets[activeSlide],
           });
         }
+
+        setTimeout(() => {
+          scrolling = false;
+        }, 500);
       }
 
       activeSlide = Math.max(0, activeSlide);
