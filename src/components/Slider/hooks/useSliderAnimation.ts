@@ -33,7 +33,7 @@ export const useSliderAnimation = (
 
     // Main slide animation logic - scroll / nav
     const slideAnimation = (e: any) => {
-      // if (isAnimationsLoaded === false) return;
+      if (isAnimationsLoaded === false) return;
 
       oldSlide = activeSlide;
 
@@ -53,17 +53,11 @@ export const useSliderAnimation = (
       } else if (e.target.classList?.contains('nav-paragraph-progress')) {
         activeSlide = navParagraphsProgress.indexOf(e.target);
 
-        // gsap.to(sections[oldSlide], {
-        //   x: offsets[activeSlide],
-        //   duration: 1,
-        // });
-        console.log(oldSlide, navParagraphsProgress.indexOf(e.target));
         if (oldSlide - navParagraphsProgress.indexOf(e.target) >= 2) {
           gsap.to(sections[oldSlide - 1], {
             x: offsets[activeSlide],
             duration: 0,
           });
-          console.log('lalal');
         }
 
         if (activeSlide - oldSlide === -3) {
@@ -102,8 +96,6 @@ export const useSliderAnimation = (
             x: offsets[activeSlide],
           });
         }
-        // gsap.to(container.current, { x: offsets[activeSlide], duration: dur, ease: 'none' });
-        gsap.to;
       }
 
       activeSlide = Math.max(0, activeSlide);
@@ -176,8 +168,6 @@ export const useSliderAnimation = (
           },
         });
 
-      // gsap.to(container.current, { x: offsets[activeSlide], duration: dur, ease: 'none' });
-
       if (activeSlide === 1) {
         skillsAnimations();
       }
@@ -200,8 +190,6 @@ export const useSliderAnimation = (
           x: offsets[activeSlide],
         });
       });
-
-      // gsap.set(container.current, { x: offsets[activeSlide] });
     };
 
     sizeIt();
@@ -219,54 +207,3 @@ export const useSliderAnimation = (
     window.addEventListener('resize', sizeIt);
   }, [container, navRef, isAnimationsLoaded]);
 };
-
-// if (gsap.isTweening(container.current)) {
-//   return;
-// } else if (e.target.classList?.contains('nav-paragraph')) {
-//   activeSlide = navParagraphs.indexOf(e.target);
-//   gsap.to(sections[activeSlide === sections.length ? sections.length - 1 : activeSlide], {
-//     x: offsets[activeSlide],
-//   });
-//   console.log(oldSlide);
-// } else if (e.target.classList?.contains('nav-paragraph-progress')) {
-//   console.log(e.target);
-
-//   // gsap.to(sections[oldSlide], {
-//   //   x: offsets[4],
-//   // });
-
-//   console.log(oldSlide === navParagraphsProgress.indexOf(e.target));
-
-//   activeSlide = navParagraphsProgress.indexOf(e.target);
-
-//   if (oldSlide > navParagraphsProgress.indexOf(e.target)) {
-//     gsap.to(sections[oldSlide], {
-//       x: offsets[navParagraphsProgress.indexOf(e.target)],
-//     });
-//   }
-
-//   gsap
-//     .timeline()
-//     .to(sections[activeSlide], {
-//       x: offsets[activeSlide],
-//       duration: 0,
-//     })
-//     .to(sections[oldSlide], {
-//       x: offsets[activeSlide],
-//     });
-//   //
-// } else {
-//   if (e.deltaY > 0) {
-//     activeSlide += e.deltaY > 0 ? 1 : -1;
-//     gsap.to(sections[activeSlide === sections.length ? sections.length - 1 : activeSlide], {
-//       x: offsets[activeSlide],
-//     });
-//   } else {
-//     activeSlide += e.deltaY > 0 ? 1 : -1;
-//     gsap.to(sections[oldSlide], {
-//       x: offsets[activeSlide],
-//     });
-//   }
-//   // gsap.to(container.current, { x: offsets[activeSlide], duration: dur, ease: 'none' });
-//   gsap.to;
-// }
