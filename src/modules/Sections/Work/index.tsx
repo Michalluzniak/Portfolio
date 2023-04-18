@@ -4,6 +4,7 @@ import ColorTilesLogo from '../../../assets/colors.png';
 import RmLogo from '../../../assets/rick-and-morty.jpg';
 import Project from './Project';
 import VerticalText from '@/components/VerticalText';
+import { ProjectsList } from './Project/ProjectsList';
 
 const projects = ['admin dashboard', 'color tiles', 'rick & morty character list', 'weather app'];
 
@@ -23,18 +24,7 @@ const Work = () => {
             setIsProjectWindowHovered(false);
           }}
         >
-          {currentProject === 1 && (
-            // <Project
-            //   title="atmosphere"
-            //   titleDescription="7 days weather forecast app"
-            //   hoverDescription="Atmosphere is a 7 days weather forecast around the world with local date."
-            //   image={WeatherAppLogo}
-            //   isProjectWindowHovered={isProjectWindowHovered}
-            //   repoUrl="https://github.com/Michalluzniak/Weather_App"
-            //   liveUrl="#"
-            // />
-            <div></div>
-          )}
+          {currentProject === 1 && <div></div>}
 
           {currentProject === 2 && (
             <Project
@@ -72,32 +62,7 @@ const Work = () => {
           )}
         </div>
       )}
-      <div className="flex flex-col col-start-3 h-1/3 w-6/12 justify-self-end self-center pr-8">
-        {projects.map((project, index) => {
-          return (
-            <div
-              key={project}
-              className={`flex duration-500 ${
-                index !== projects.length - 1
-                  ? currentProject === index + 1
-                    ? 'border-b border-[#9c0d38]'
-                    : 'border-b border-soft-white'
-                  : ''
-              } h-1/4 items-center cursor-pointer relative text-soft-white`}
-              onMouseEnter={() => {
-                setCurrentProject(index + 1);
-              }}
-            >
-              <div
-                className={`absolute h-1 self-end  ${
-                  currentProject === index + 1 ? 'w-full' : 'w-0'
-                }  duration-500 bg-[#9c0d38]`}
-              ></div>
-              <p className={`uppercase  duration-500 z-50 w-8/12 text-base`}>{project}</p>
-            </div>
-          );
-        })}
-      </div>
+      <ProjectsList projects={projects} currentProject={currentProject} setCurrentProject={setCurrentProject} />
     </section>
   );
 };

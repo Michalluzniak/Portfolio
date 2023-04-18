@@ -17,7 +17,7 @@ export const HoveredProject = ({ hoverDescription, repoUrl, liveUrl }: HoveredPr
         <Link
           target="_blank"
           href={repoUrl}
-          className="grid place-items-center w-1/4 h-10 border border-[#9c0d38] text-base font-main text-soft-white rounded-full mx-6 z-40 hover:bg-[#9c0d38] duration-300"
+          className="grid place-items-center w-1/4 h-10 border border-second-red text-base font-main text-soft-white rounded-full mx-6 z-40 hover:bg-second-red duration-300"
         >
           Repo
         </Link>
@@ -25,7 +25,7 @@ export const HoveredProject = ({ hoverDescription, repoUrl, liveUrl }: HoveredPr
           <Link
             target="_blank"
             href={liveUrl}
-            className="grid place-items-center w-1/4 h-10 border border-[#9c0d38] text-base font-main text-soft-white rounded-full mx-6 z-40 hover:bg-[#9c0d38] duration-300"
+            className="grid place-items-center w-1/4 h-10 border border-second-red text-base font-main text-soft-white rounded-full mx-6 z-40 hover:bg-second-red duration-300"
           >
             Live
           </Link>

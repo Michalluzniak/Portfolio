@@ -18,6 +18,8 @@ module.exports = {
       colors: {
         'soft-white': '#F6F4F3',
         dark: '#161316',
+        'main-red': '#d62246',
+        'second-red': '#9c0d38',
       },
     },
 

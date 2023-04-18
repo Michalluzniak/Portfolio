@@ -1,15 +1,17 @@
-import AboutMe from '@/modules/Sections/AboutMe';
-import { ScrollIcon } from '@/components/Slider/ScrollIcon';
-import Skills from '@/modules/Sections/Skills';
 import React, { useEffect, useRef, useState } from 'react';
+import { ScrollIcon } from '@/components/Slider/ScrollIcon';
 
 import { useSliderAnimation } from './hooks/useSliderAnimation';
 
 import Nav from './Nav';
+// SECTIONS
+import AboutMe from '@/modules/Sections/AboutMe';
+import Skills from '@/modules/Sections/Skills';
 import Work from '@/modules/Sections/Work';
 import Contact from '@/modules/Sections/Contact';
 
 const Slider = () => {
+  //
   const [isAnimationsLoaded, setIsAnimationsLoaded] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);

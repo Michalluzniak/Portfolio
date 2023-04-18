@@ -40,12 +40,12 @@ export const NavElements = () => {
             {navSections.map((section, index) => {
               return index === navSections.length - 1 ? (
                 <>
-                  <p className="text-[#9c0d38] text-xl nav-paragraph-progress cursor-pointer">{section}</p>
+                  <p className="text-main-red text-xl nav-paragraph-progress cursor-pointer">{section}</p>
                 </>
               ) : (
                 <>
-                  <p className="text-[#9c0d38] text-xl nav-paragraph-progress cursor-pointer">{section}</p>
-                  <span className="bg-[#9c0d38]  w-1/12 h-1"></span>
+                  <p className="text-main-red text-xl nav-paragraph-progress cursor-pointer">{section}</p>
+                  <span className="bg-main-red  w-1/12 h-1"></span>
                 </>
               );
             })}

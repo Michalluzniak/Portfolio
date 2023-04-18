@@ -44,7 +44,7 @@ const Skills = () => {
             key={index}
             className={`flex flex-col justify-center items-center shrink-0  text-sm text-dark w-18 uppercase skill`}
           >
-            <p className="text-5xl text-[#9c0d38] mb-4">{skill.icon}</p>
+            <p className="text-5xl text-second-red mb-4">{skill.icon}</p>
             <p className="font-semibold">{skill.name}</p>
           </div>
         ))}
