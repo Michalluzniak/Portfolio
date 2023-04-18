@@ -195,6 +195,12 @@ export const useSliderAnimation = (
       for (let i = 0; i < sections.length; i++) {
         offsets.push(-sections[i].offsetLeft);
       }
+      sections.forEach((section, index) => {
+        gsap.to(section, {
+          x: offsets[activeSlide],
+        });
+      });
+
       // gsap.set(container.current, { x: offsets[activeSlide] });
     };
 
