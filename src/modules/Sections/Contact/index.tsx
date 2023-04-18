@@ -46,7 +46,7 @@ const Contact = () => {
           placeholder="Message"
           cols={40}
           rows={10}
-          className="border-b-2 border-dark bg-transparent max-h-96 min-h-[14rem] h-full w-full px-2 py-2 outline-none mb-2"
+          className="contact-section-textarea border-b-2 border-dark bg-transparent max-h-96 min-h-[14rem] h-full w-full px-2 py-2 outline-none mb-2"
         ></textarea>
         <button className="bg-[#9c0d38] text-soft-white font-main w-full h-8 rounded-md">Send</button>
       </form>

@@ -17,7 +17,7 @@ const AboutMe = (animationLoadingHandler: any) => {
         <Image src={profilePhoto} fill alt="background cherry blossom picture"></Image>
       </div>
 
-      <div className="about-me col-start-3 row-start-3  w-2/6 justify-self-end  self-start mb-8 me-10 text-soft-white">
+      <div className="about-me col-start-3 row-start-2 row-span-2  w-2/6 justify-self-end  self-start mb-8 me-10 text-soft-white">
         <p className="font-main text-sm tracking-wide hero-description">
           <span id="hero-description-content"></span>
         </p>

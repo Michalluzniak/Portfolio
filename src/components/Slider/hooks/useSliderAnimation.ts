@@ -7,7 +7,6 @@ export const useSliderAnimation = (
   navRef: any,
   isAnimationsLoaded: boolean
 ) => {
-  const [clickedSection, setClickedSection] = useState<any>();
   //
   useEffect(() => {
     //
@@ -15,9 +14,29 @@ export const useSliderAnimation = (
       return;
     }
 
+    let isFormHovered = false;
+
     let sections: HTMLDivElement[] = gsap.utils.toArray('.sections');
     const navParagraphs = gsap.utils.toArray('.nav-paragraph');
     const navParagraphsProgress = gsap.utils.toArray('.nav-paragraph-progress');
+    const contactForm: any = document.querySelector('.contact-section-textarea');
+
+    contactForm.addEventListener('input', () => {
+      if (contactForm.scrollHeight > contactForm.clientHeight) {
+        isFormHovered = true;
+      }
+    });
+
+    contactForm.addEventListener('mouseenter', () => {
+      if (contactForm.scrollHeight > contactForm.clientHeight) {
+        isFormHovered = true;
+      }
+    });
+
+    contactForm.addEventListener('mouseleave', () => {
+      isFormHovered = false;
+    });
+
     let scrolling = false;
     let dur = 0.5;
     let offsets: any = [];
@@ -194,7 +213,7 @@ export const useSliderAnimation = (
       for (let i = 0; i < sections.length; i++) {
         offsets.push(-sections[i].offsetLeft);
       }
-      sections.forEach((section, index) => {
+      sections.forEach((section) => {
         gsap.to(section, {
           x: offsets[activeSlide],
         });
@@ -208,11 +227,13 @@ export const useSliderAnimation = (
     navParagraphs.forEach((element: any) =>
       element.addEventListener('click', (e: any) => {
         slideAnimation(e);
-        setClickedSection(e.target.innerText);
       })
     );
 
-    window.addEventListener('wheel', slideAnimation);
+    window.addEventListener('wheel', (e) => {
+      if (isFormHovered) return;
+      slideAnimation(e);
+    });
     window.addEventListener('resize', sizeIt);
   }, [container, navRef, isAnimationsLoaded]);
 };

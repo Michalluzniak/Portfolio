@@ -4,9 +4,9 @@ import ColorTilesLogo from '../../../assets/colors.png';
 import RmLogo from '../../../assets/rick-and-morty.jpg';
 import Project from './Project';
 import VerticalText from '@/components/VerticalText';
-import { ProjectsList } from './Project/ProjectsList';
+import { ProjectsList } from './ProjectsList';
 
-const projects = ['admin dashboard', 'color tiles', 'rick & morty character list', 'weather app'];
+const projects = ['color tiles', 'rick & morty character list', 'weather app'];
 
 const Work = () => {
   const [currentProject, setCurrentProject] = useState<number>(0);
@@ -24,9 +24,7 @@ const Work = () => {
             setIsProjectWindowHovered(false);
           }}
         >
-          {currentProject === 1 && <div></div>}
-
-          {currentProject === 2 && (
+          {currentProject === 1 && (
             <Project
               title="Color tiles"
               titleDescription="store your favourite colors"
@@ -37,7 +35,7 @@ const Work = () => {
               liveUrl="https://michalluzniak.github.io/Color-Tiles/"
             />
           )}
-          {currentProject === 3 && (
+          {currentProject === 2 && (
             <Project
               title="Rick & Morty"
               titleDescription="characters list"
@@ -49,7 +47,7 @@ const Work = () => {
             />
           )}
 
-          {currentProject === 4 && (
+          {currentProject === 3 && (
             <Project
               title="atmosphere"
               titleDescription="7 days weather forecast app"
