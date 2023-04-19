@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { SiGmail } from 'react-icons/si';
 import { AiFillLinkedin } from 'react-icons/ai';
 import { AiFillGithub } from 'react-icons/ai';
+import { MdConstruction } from 'react-icons/md';
 
 import Slider from '@/components/Slider';
 import Link from 'next/link';
@@ -13,6 +14,11 @@ export default function Home() {
       <Head>
         <title>Michał Łuźniak portfolio</title>
       </Head>
+
+      <div className="h-screen w-full bg-dark z-50 absolute top-0 left-0 flex flex-col justify-center items-center lg:bg-transparent lg:z-0">
+        <p className="text-4xl text-soft-white text-center mb-2">Mobile project in development</p>
+        <MdConstruction className="text-4xl text-soft-white" />
+      </div>
       <div className="h-screen w-full grid grid-cols-layout grid-rows-layout ">
         <div className="col-start-2 row-start-1 relative" id="top-row"></div>
         <div className="col-start-3 row-span-3 relative" id="right-column"></div>

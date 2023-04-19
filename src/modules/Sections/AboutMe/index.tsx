@@ -16,8 +16,8 @@ const AboutMe = (animationLoadingHandler: any) => {
         <Image src={profilePhoto} priority={true} loading="eager" fill alt="background cherry blossom picture"></Image>
       </div>
 
-      <div className="about-me lg:w-4/6 xl:w-3/6  2xl:w-2/6 2xl:row-start-3  col-start-3 row-start-2  justify-self-end self-start me-10 text-soft-white">
-        <p className="font-main lg:text-xs  xl:text-xs text-sm tracking-wide hero-description">
+      <div className="about-me lg:w-4/6 xl:w-3/6  2xl:w-2/6   col-start-3 row-start-2  justify-self-end self-start me-10 text-soft-white">
+        <p className="font-main lg:text-xs  xl:text-xs 2xl:text-sm tracking-wide hero-description">
           <span id="hero-description-content"></span>
         </p>
       </div>

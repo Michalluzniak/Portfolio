@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { skillsAnimations } from '@/modules/Sections/Skills/skillsAnimation';
 
@@ -15,6 +15,13 @@ export const useSliderAnimation = (
     }
 
     let isFormHovered = false;
+    let scrolling = false;
+    let dur = 0.5;
+    let offsets: any = [];
+    let oldSlide = 0;
+    let activeSlide = 0;
+    const navColors = ['#020202', '#F6F4F3', '#020202', '#F6F4F3'];
+    const navParagraphsColors = ['#F6F4F3', '#020202', '#F6F4F3', '#020202'];
 
     let sections: HTMLDivElement[] = gsap.utils.toArray('.sections');
     const navParagraphs = gsap.utils.toArray('.nav-paragraph');
@@ -36,14 +43,6 @@ export const useSliderAnimation = (
     contactForm.addEventListener('mouseleave', () => {
       isFormHovered = false;
     });
-
-    let scrolling = false;
-    let dur = 0.5;
-    let offsets: any = [];
-    let oldSlide = 0;
-    let activeSlide = 0;
-    const navColors = ['#020202', '#F6F4F3', '#020202', '#F6F4F3'];
-    const navParagraphsColors = ['#F6F4F3', '#020202', '#F6F4F3', '#020202'];
 
     let iw: number = container.current.offsetWidth;
 
@@ -102,7 +101,6 @@ export const useSliderAnimation = (
         if (e.deltaY > 0 && activeSlide !== sections.length - 1) {
           scrolling = true;
           activeSlide++;
-          // activeSlide += e.deltaY > 0 ? 1 : -1;
 
           gsap.to(sections[activeSlide], {
             x: offsets[activeSlide],
