@@ -33,7 +33,7 @@ const Slider = () => {
       id="sections-container"
     >
       <video ref={videoRef} autoPlay muted className="absolute w-full h-full top-0 left-0 object-cover object-bottom">
-        <source src="blossoming.mp4" />
+        <source src="blossoming.webm" />
       </video>
       <main ref={sectionRef} className="flex flex-row w-full h-full">
         <AboutMe animationLoadingHandler={animationLoadingHandler} />

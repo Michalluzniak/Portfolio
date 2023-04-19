@@ -13,7 +13,7 @@ const AboutMe = (animationLoadingHandler: any) => {
         <h2 className="lg:text-xl 2xl:text-3xl font-normal  font-second ms-0.5">Front-End Developer</h2>
       </div>
       <div className="lg:w-56 lg:h-56 xl:w-60 xl:h-60 2xl:w-72 2xl:h-72 col-start-1 row-start-2 backdrop-blur-md w-72 h-72 border border-soft-white ms-24">
-        <Image src={profilePhoto} fill alt="background cherry blossom picture"></Image>
+        <Image src={profilePhoto} priority={true} loading="eager" fill alt="background cherry blossom picture"></Image>
       </div>
 
       <div className="about-me lg:w-4/6 xl:w-3/6  2xl:w-2/6 2xl:row-start-3  col-start-3 row-start-2  justify-self-end self-start me-10 text-soft-white">
