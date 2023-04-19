@@ -38,14 +38,14 @@ const Skills = () => {
     <section className="grid grid-cols-[5rem_1fr_5rem] w-full h-full shrink-0 sections text-main bg-soft-white ">
       <VerticalText text="stack" color="text-dark" />
 
-      <div className="xl:w-7/12 2xl:w-5/12 col-start-2 justify-self-center self-center grid grid-cols-7 grid-rows-2 gap-6  skill">
+      <div className="lg:w-5/12 lg:opacity-0 lg:gap-x-12 lg:gap-y-6 xl:gap-6  2xl:opacity-1 xl:w-7/12 2xl:w-5/12 col-start-2 justify-self-center self-center grid grid-cols-7 grid-rows-2 skill">
         {stackArray.map((skill, index) => (
           <div
             key={index}
-            className={`flex flex-col justify-center items-center shrink-0 text-sm text-dark max-w uppercase `}
+            className={`flex flex-col justify-center items-center shrink-0 text-sm text-dark uppercase `}
           >
-            <p className="xl:text-3xl 2xl:text-5xl text-second-red mb-4">{skill.icon}</p>
-            <p className="xl:text-xs font-semibold">{skill.name}</p>
+            <p className="lg:text-2xl xl:text-3xl 2xl:text-5xl text-second-red mb-4">{skill.icon}</p>
+            <p className="lg:text-xs font-semibold">{skill.name}</p>
           </div>
         ))}
       </div>

@@ -8,7 +8,7 @@ interface ProjectsListProps {
 
 export const ProjectsList = ({ projects, currentProject, setCurrentProject }: ProjectsListProps) => {
   return (
-    <div className="flex flex-col col-start-3 h-1/3 w-6/12 justify-self-end self-center pr-8">
+    <div className="lg:w-8/12 xl:w-6/12 flex flex-col col-start-3 h-1/3  justify-self-end self-center pr-8">
       {projects.map((project, index) => {
         return (
           <div
@@ -25,11 +25,11 @@ export const ProjectsList = ({ projects, currentProject, setCurrentProject }: Pr
             }}
           >
             <div
-              className={`xl:h-0.5 absolute h-1 self-end  ${
+              className={`lg:h-0.5 absolute h-1 self-end  ${
                 currentProject === index + 1 ? 'w-full' : 'w-0'
               }  duration-500 bg-main-red`}
             ></div>
-            <p className={`xl:text-sm xl:w-11/12 2xl:w-8/12 uppercase duration-500 z-50`}>{project}</p>
+            <p className={`lg:text-sm xl:w-11/12 2xl:w-8/12 uppercase duration-500 z-50`}>{project}</p>
           </div>
         );
       })}

@@ -21,7 +21,7 @@ const Contact = () => {
   return (
     <section className="contact-section grid grid-cols-[5rem_1fr_5rem] w-full h-full bg-soft-white shrink-0 sections">
       <VerticalText text="contact" color="text-dark" />
-      <form onSubmit={submitForm} className="col-start-2 justify-self-center self-center w-1/3 me-12">
+      <form onSubmit={submitForm} className="lg:w-3/5  xl:w-1/3 col-start-2 justify-self-center self-center ">
         <div className="flex w-full">
           <div className="grow">
             <input

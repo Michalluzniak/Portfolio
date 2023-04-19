@@ -18,7 +18,7 @@ const Work = () => {
 
       {currentProject !== 0 && (
         <div
-          className="col-start-2 h-1/2 w-8/12 justify-self-center self-center relative font-logos"
+          className="lg:w-10/12  xl:w-8/12 col-start-2 h-1/2  justify-self-center self-center relative font-logos"
           onMouseEnter={() => setIsProjectWindowHovered(true)}
           onMouseLeave={() => {
             setIsProjectWindowHovered(false);

@@ -16,17 +16,17 @@ export default function Home() {
         id="left-column"
       >
         <Link href="mailto:michal.luzniak8@gmail.com" className="text-soft-white hover:text-second-red duration-300">
-          <SiGmail className="text-3xl my-4 " />
+          <SiGmail className="lg:text-2xl xl:text-3xl my-4 " />
         </Link>
         <a
           target="_blank"
           href="https://www.linkedin.com/in/michalluzniak/"
           className="text-soft-white hover:text-second-red duration-300"
         >
-          <AiFillLinkedin className="text-4xl my-4" />
+          <AiFillLinkedin className="lg:text-3xl xl:text-4xl my-4" />
         </a>
         <a target="_blank" href="#" className="text-soft-white hover:text-second-red duration-300">
-          <AiFillGithub className="text-4xl my-4" />
+          <AiFillGithub className="lg:text-3xl xl:text-4xl my-4" />
         </a>
       </div>
       <Slider></Slider>
