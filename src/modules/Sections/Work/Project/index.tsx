@@ -21,7 +21,7 @@ const Project = ({
           isProjectWindowHovered ? 'opacity-10' : 'opacity-40'
         }`}
       >
-        <Image src={image} object-fit="cover" fill alt="section image" loading="eager"></Image>
+        <Image src={image} object-fit="cover" fill alt="section image" loading="eager" priority={true}></Image>
       </div>
 
       <HoveredProject hoverDescription={hoverDescription} repoUrl={repoUrl} liveUrl={liveUrl} />
