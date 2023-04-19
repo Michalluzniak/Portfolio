@@ -1,5 +1,6 @@
 import React from 'react';
 import { HoveredProject } from './HoveredProject';
+import Image from 'next/image';
 
 const Project = ({
   title,
@@ -19,8 +20,9 @@ const Project = ({
         className={`w-full h-full absolute bg-cover duration-500 group-hover/project1:scale-125  ${
           isProjectWindowHovered ? 'opacity-10' : 'opacity-40'
         }`}
-        style={{ backgroundImage: `url(${image.src})` }}
-      />
+      >
+        <Image src={image} object-fit="cover" fill alt="section image" loading="eager"></Image>
+      </div>
 
       <HoveredProject hoverDescription={hoverDescription} repoUrl={repoUrl} liveUrl={liveUrl} />
 
