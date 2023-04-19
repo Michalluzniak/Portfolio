@@ -24,10 +24,10 @@ const Project = ({
 
       <HoveredProject hoverDescription={hoverDescription} repoUrl={repoUrl} liveUrl={liveUrl} />
 
-      <p className="row-start-2 col-start-1 col-span-3 justify-self-center self-center text-soft-white mb-4 z-20 text-8xl uppercase group-hover/project1:opacity-0 duration-300">
+      <p className=" xl:text-6xl 2xl:text-8xl row-start-2 col-start-1 col-span-3 justify-self-center self-center text-soft-white mb-4 z-20 uppercase group-hover/project1:opacity-0 duration-300">
         {title}
       </p>
-      <p className="row-start-2 col-start-1 col-span-3 justify-self-center self-end text-soft-white z-20 text-2xl  uppercase group-hover/project1:opacity-0 duration-300">
+      <p className=" xl:text-xl 2xl:text-2xl row-start-2 col-start-1 col-span-3 justify-self-center self-end text-soft-white z-20 uppercase group-hover/project1:opacity-0 duration-300">
         {titleDescription}
       </p>
     </div>

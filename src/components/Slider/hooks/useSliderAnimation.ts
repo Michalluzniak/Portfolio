@@ -52,7 +52,7 @@ export const useSliderAnimation = (
 
     // Main slide animation logic - scroll / nav
     const slideAnimation = (e: any) => {
-      if (isAnimationsLoaded === false) return;
+      // if (isAnimationsLoaded === false) return;
 
       oldSlide = activeSlide;
 

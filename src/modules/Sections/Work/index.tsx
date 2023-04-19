@@ -9,7 +9,7 @@ import { ProjectsList } from './ProjectsList';
 const projects = ['color tiles', 'rick & morty character list', 'weather app'];
 
 const Work = () => {
-  const [currentProject, setCurrentProject] = useState<number>(0);
+  const [currentProject, setCurrentProject] = useState<number>(1);
   const [isProjectWindowHovered, setIsProjectWindowHovered] = useState<boolean>(false);
 
   return (

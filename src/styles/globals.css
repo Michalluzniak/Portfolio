@@ -48,5 +48,5 @@ body {
 
 .sections {
   position: relative;
-  float: left;
+  /* float: left; */
 }

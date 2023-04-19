@@ -35,7 +35,7 @@ const Slider = () => {
       <video ref={videoRef} autoPlay muted className="absolute w-full h-full top-0 left-0 object-cover object-bottom">
         <source src="blossoming.mp4" />
       </video>
-      <main ref={sectionRef} className="flex grow  flex-row w-full">
+      <main ref={sectionRef} className="flex flex-row w-full h-full">
         <AboutMe animationLoadingHandler={animationLoadingHandler} />
         <Skills />
         <Work />

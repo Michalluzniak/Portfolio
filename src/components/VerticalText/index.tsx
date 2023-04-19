@@ -8,7 +8,9 @@ interface VerticalTextProps {
 const VerticalText = ({ text, color }: VerticalTextProps) => {
   const splittedText = text.split('');
   return (
-    <p className={`${color} flex flex-col uppercase text-3xl self-center items-center col-start-1 font-bold`}>
+    <p
+      className={`${color} xl:text-2xl  2xl:text-3xl flex flex-col uppercase self-center items-center col-start-1 font-bold`}
+    >
       {splittedText.map((char, index) => (
         <span key={index}>{char}</span>
       ))}

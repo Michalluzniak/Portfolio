@@ -25,11 +25,11 @@ export const ProjectsList = ({ projects, currentProject, setCurrentProject }: Pr
             }}
           >
             <div
-              className={`absolute h-1 self-end  ${
+              className={`xl:h-0.5 absolute h-1 self-end  ${
                 currentProject === index + 1 ? 'w-full' : 'w-0'
               }  duration-500 bg-main-red`}
             ></div>
-            <p className={`uppercase  duration-500 z-50 w-8/12 text-base`}>{project}</p>
+            <p className={`xl:text-sm xl:w-11/12 2xl:w-8/12 uppercase duration-500 z-50`}>{project}</p>
           </div>
         );
       })}
