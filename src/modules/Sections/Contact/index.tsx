@@ -1,7 +1,7 @@
 import VerticalText from '@/components/VerticalText';
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { FcCheckmark } from 'react-icons/Fc';
+import { FcCheckmark } from 'react-icons/fc';
 
 const Contact = () => {
   //
