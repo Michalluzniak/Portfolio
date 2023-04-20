@@ -2,7 +2,11 @@ import Image from 'next/image';
 import profilePhoto from '../../../assets/profile.png';
 import { useAboutMeAnimations } from '../hooks/useAboutMeAnimations';
 
-const AboutMe = (animationLoadingHandler: any) => {
+interface AboutMeProps {
+  animationLoadingHandler: (key: React.Dispatch<React.SetStateAction<boolean>>) => void;
+}
+
+const AboutMe = (animationLoadingHandler: AboutMeProps) => {
   //
   useAboutMeAnimations(animationLoadingHandler);
 
