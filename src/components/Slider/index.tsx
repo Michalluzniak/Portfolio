@@ -32,7 +32,12 @@ const Slider = () => {
       className="flex flex-col bg-dark col-start-2 row-start-2 border border-soft-white overflow-hidden relative"
       id="sections-container"
     >
-      <video ref={videoRef} autoPlay muted className="absolute w-full h-full top-0 left-0 object-cover object-bottom">
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        className=" md:object-cover md:w-full md:h-full md:top-0 md:left-0 lg:w-full lg:h-full lg:top-0 lg:left-0 lg:object-cover lg:object-bottom absolute"
+      >
         <source src="blossoming.webm" />
       </video>
       <main ref={sectionRef} className="flex flex-row w-full h-full">
