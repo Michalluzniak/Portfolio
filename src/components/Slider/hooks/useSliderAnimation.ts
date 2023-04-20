@@ -4,7 +4,7 @@ import { skillsAnimations } from '@/modules/Sections/Skills/skillsAnimation';
 
 export const useSliderAnimation = (
   container: React.RefObject<HTMLDivElement>,
-  navRef: any,
+  navRef: React.RefObject<HTMLDivElement>,
   isAnimationsLoaded: boolean
 ) => {
   //
@@ -17,32 +17,35 @@ export const useSliderAnimation = (
     let isFormHovered = false;
     let scrolling = false;
     let dur = 0.5;
-    let offsets: any = [];
+    let offsets: number[] = [];
     let oldSlide = 0;
     let activeSlide = 0;
     const navColors = ['#020202', '#F6F4F3', '#020202', '#F6F4F3'];
     const navParagraphsColors = ['#F6F4F3', '#020202', '#F6F4F3', '#020202'];
 
     let sections: HTMLDivElement[] = gsap.utils.toArray('.sections');
-    const navParagraphs = gsap.utils.toArray('.nav-paragraph');
-    const navParagraphsProgress = gsap.utils.toArray('.nav-paragraph-progress');
-    const contactForm: any = document.querySelector('.contact-section-textarea');
+    const navParagraphs: HTMLParagraphElement[] = gsap.utils.toArray('.nav-paragraph');
+    const navParagraphsProgress: HTMLParagraphElement[] = gsap.utils.toArray('.nav-paragraph-progress');
+    const contactForm: HTMLTextAreaElement | null = document.querySelector('.contact-section-textarea');
 
-    contactForm.addEventListener('input', () => {
-      if (contactForm.scrollHeight > contactForm.clientHeight) {
-        isFormHovered = true;
-      }
-    });
+    if (contactForm !== null)
+      contactForm.addEventListener('input', () => {
+        if (contactForm.scrollHeight > contactForm.clientHeight) {
+          isFormHovered = true;
+        }
+      });
 
-    contactForm.addEventListener('mouseenter', () => {
-      if (contactForm.scrollHeight > contactForm.clientHeight) {
-        isFormHovered = true;
-      }
-    });
+    contactForm &&
+      contactForm.addEventListener('mouseenter', () => {
+        if (contactForm.scrollHeight > contactForm.clientHeight) {
+          isFormHovered = true;
+        }
+      });
 
-    contactForm.addEventListener('mouseleave', () => {
-      isFormHovered = false;
-    });
+    contactForm &&
+      contactForm.addEventListener('mouseleave', () => {
+        isFormHovered = false;
+      });
 
     let iw: number = container.current.offsetWidth;
 
@@ -50,15 +53,15 @@ export const useSliderAnimation = (
     gsap.to('.mask', { scaleX: 0.15, duration: 0 });
 
     // Main slide animation logic - scroll / nav
-    const slideAnimation = (e: any) => {
-      if (isAnimationsLoaded === false) return;
-
+    const slideAnimation = (e: MouseEvent | WheelEvent) => {
+      if (isAnimationsLoaded === false || e.target === null) return;
+      const target = e.target as HTMLElement & HTMLParagraphElement;
       oldSlide = activeSlide;
-
+      e;
       if (gsap.isTweening(container.current)) {
         return;
-      } else if (e.target.classList?.contains('nav-paragraph')) {
-        activeSlide = navParagraphs.indexOf(e.target);
+      } else if (target.classList?.contains('nav-paragraph')) {
+        activeSlide = navParagraphs.indexOf(target);
         if (activeSlide > 1)
           gsap.to(sections[activeSlide + 1], {
             x: offsets[activeSlide],
@@ -68,10 +71,10 @@ export const useSliderAnimation = (
           x: offsets[activeSlide],
           duration: dur,
         });
-      } else if (e.target.classList?.contains('nav-paragraph-progress')) {
-        activeSlide = navParagraphsProgress.indexOf(e.target);
+      } else if (target.classList?.contains('nav-paragraph-progress')) {
+        activeSlide = navParagraphsProgress.indexOf(target);
 
-        if (oldSlide - navParagraphsProgress.indexOf(e.target) >= 2) {
+        if (oldSlide - navParagraphsProgress.indexOf(target) >= 2) {
           gsap.to(sections[oldSlide - 1], {
             x: offsets[activeSlide],
             duration: 0,
@@ -97,18 +100,18 @@ export const useSliderAnimation = (
         //
       } else {
         if (scrolling) return;
+        if ('deltaY' in e) {
+          if (e.deltaY > 0 && activeSlide !== sections.length - 1) {
+            scrolling = true;
+            activeSlide++;
 
-        if (e.deltaY > 0 && activeSlide !== sections.length - 1) {
-          scrolling = true;
-          activeSlide++;
-
-          gsap.to(sections[activeSlide], {
-            x: offsets[activeSlide],
-          });
-        } else if (e.deltaY < 0 && activeSlide !== 0) {
-          scrolling = true;
-          activeSlide--;
-
+            gsap.to(sections[activeSlide], {
+              x: offsets[activeSlide],
+            });
+          } else if (e.deltaY < 0 && activeSlide !== 0) {
+            scrolling = true;
+            activeSlide--;
+          }
           gsap.to(sections[activeSlide], {
             x: offsets[activeSlide],
             duration: 0,
@@ -222,9 +225,10 @@ export const useSliderAnimation = (
     sizeIt();
 
     // add click event listener to navigation paragraphs
-    navParagraphsProgress.forEach((element: any) => element.addEventListener('click', slideAnimation));
-    navParagraphs.forEach((element: any) =>
-      element.addEventListener('click', (e: any) => {
+    navParagraphsProgress.forEach((element: HTMLParagraphElement) => element.addEventListener('click', slideAnimation));
+
+    navParagraphs.forEach((element: HTMLParagraphElement) =>
+      element.addEventListener('click', (e) => {
         slideAnimation(e);
       })
     );

@@ -1,7 +1,11 @@
 import React from 'react';
 import { NavElements } from './NavElements';
 
-const Nav = ({ navRef }: any) => {
+interface NavRefProp {
+  navRef: React.RefObject<HTMLDivElement>;
+}
+
+const Nav = ({ navRef }: NavRefProp) => {
   return (
     <nav
       ref={navRef}

@@ -1,5 +1,5 @@
 import gsap from 'gsap';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { TextPlugin } from 'gsap/dist/TextPlugin';
 
 export const useAboutMeAnimations = ({ animationLoadingHandler }: any) => {

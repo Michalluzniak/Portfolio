@@ -13,14 +13,14 @@ import Contact from '@/modules/Sections/Contact';
 const Slider = () => {
   //
   const [isAnimationsLoaded, setIsAnimationsLoaded] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<any>(null);
   const navRef = useRef<HTMLDivElement>(null);
 
   useSliderAnimation(sectionRef, navRef, isAnimationsLoaded);
 
-  const videoRef = useRef<any>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
-    videoRef.current.playbackRate = 8;
+    if (videoRef.current !== null) videoRef.current.playbackRate = 8;
   }, []);
 
   const animationLoadingHandler = () => {
