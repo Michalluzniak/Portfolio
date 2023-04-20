@@ -19,8 +19,8 @@ const AboutMe = (animationLoadingHandler: any) => {
       <div className="md:col-start-2 md:justify-self-center lg:col-start-1 lg:justify-self-start lg:w-56 lg:h-56 lg:ms-24 xl:w-60 xl:h-60 2xl:w-72 2xl:h-72 col-start-1 row-start-2 backdrop-blur-md w-72 h-72 border border-soft-white ">
         <Image src={profilePhoto} priority={true} loading="eager" fill alt="background cherry blossom picture"></Image>
       </div>
-      <div className="about-me md:bg-dark/40 md:col-start-1 md:col-span-3 md:row-start-3 md:w-11/12 md:mt-12 md:px-10 md:py-4 md:rounded-2xl md:text-center md:justify-self-center lg:bg-transparent lg:px-0 lg:mt-0  lg:text-start lg:col-start-3  lg:row-start-2  lg:w-4/6  lg:me-10  xl:w-3/6  2xl:w-2/6 lg:justify-self-end self-start text-soft-white">
-        <p className="font-main lg:text-xs  xl:text-xs 2xl:text-sm tracking-wide hero-description">
+      <div className="about-me md:bg-dark/40 md:col-start-1 md:col-span-3 md:row-start-3 md:w-11/12 md:mt-12 md:px-10 md:py-4 md:rounded-2xl md:text-center md:justify-self-center lg:bg-transparent lg:px-0 lg:mt-0 lg:py-0 lg:text-start lg:col-start-3  lg:row-start-2  lg:w-4/6  lg:me-10  xl:w-3/6  2xl:w-2/6 lg:justify-self-end self-start text-soft-white">
+        <p className="font-main lg:text-xs xl:text-xs 2xl:text-sm tracking-wide hero-description">
           <span id="hero-description-content"></span>
         </p>
       </div>
