@@ -2,7 +2,11 @@ import gsap from 'gsap';
 import { useEffect } from 'react';
 import { TextPlugin } from 'gsap/dist/TextPlugin';
 
-export const useAboutMeAnimations = ({ animationLoadingHandler }: any) => {
+interface AboutMeProps {
+  animationLoadingHandler: (key: React.Dispatch<React.SetStateAction<boolean>>) => void;
+}
+
+export const useAboutMeAnimations = ({ animationLoadingHandler }: AboutMeProps) => {
   useEffect(() => {
     let cursor: HTMLElement | null = document.querySelector('#hero-description-content');
     let text: HTMLParagraphElement | null | Node = document.querySelector('.hero-description');
@@ -33,7 +37,7 @@ export const useAboutMeAnimations = ({ animationLoadingHandler }: any) => {
       .to('.scroll-icon-container', {
         opacity: 1,
         onComplete: () => {
-          animationLoadingHandler(true);
+          animationLoadingHandler(() => true);
         },
       })
       .to('.scroll-icon', { y: '25%', yoyo: true, repeat: -1, duration: 1 });

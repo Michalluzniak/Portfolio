@@ -215,6 +215,7 @@ export const useSliderAnimation = (
       const examp = document.querySelector('#sections-container') as HTMLElement;
 
       offsets = [];
+
       if (container.current) iw = examp.offsetWidth;
 
       gsap.set(container.current, { width: sections.length * iw });
@@ -243,7 +244,6 @@ export const useSliderAnimation = (
       sections.forEach((section) => {
         gsap.to(section, {
           x: offsets[activeSlide],
-          duration: 0,
         });
       });
       sizeIt();

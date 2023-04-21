@@ -1,6 +1,16 @@
 import React from 'react';
 import { HoveredProject } from './HoveredProject';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
+
+interface ProjectProps {
+  title: string;
+  titleDescription: string;
+  image: StaticImageData;
+  hoverDescription: string;
+  isProjectWindowHovered: boolean;
+  repoUrl: string;
+  liveUrl: string;
+}
 
 const Project = ({
   title,
@@ -10,7 +20,7 @@ const Project = ({
   isProjectWindowHovered,
   repoUrl,
   liveUrl,
-}: any) => {
+}: ProjectProps) => {
   return (
     <div
       className="project1 grid grid-cols-3 grid-rows-3 relative w-full h-full group/project1 overflow-hidden"
