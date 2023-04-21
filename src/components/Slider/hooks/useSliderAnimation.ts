@@ -84,6 +84,7 @@ export const useSliderAnimation = (
         if (activeSlide - oldSlide === -3) {
           gsap.to(sections[activeSlide + 1], {
             x: offsets[activeSlide],
+            duration: 0,
           });
         }
 
@@ -104,9 +105,14 @@ export const useSliderAnimation = (
           if (e.deltaY > 0 && activeSlide !== sections.length - 1) {
             scrolling = true;
             activeSlide++;
+            gsap.to(sections[activeSlide + 1], {
+              x: offsets[activeSlide],
+              duration: 0,
+            });
 
             gsap.to(sections[activeSlide], {
               x: offsets[activeSlide],
+              duration: dur,
             });
           } else if (e.deltaY < 0 && activeSlide !== 0) {
             scrolling = true;
@@ -114,11 +120,12 @@ export const useSliderAnimation = (
           }
           gsap.to(sections[activeSlide], {
             x: offsets[activeSlide],
-            duration: 0,
+            duration: dur,
           });
 
           gsap.to(sections[oldSlide], {
             x: offsets[activeSlide],
+            duration: dur,
           });
         }
 
@@ -215,11 +222,6 @@ export const useSliderAnimation = (
       for (let i = 0; i < sections.length; i++) {
         offsets.push(-sections[i].offsetLeft);
       }
-      sections.forEach((section) => {
-        gsap.to(section, {
-          x: offsets[activeSlide],
-        });
-      });
     };
 
     sizeIt();
@@ -237,6 +239,14 @@ export const useSliderAnimation = (
       if (isFormHovered) return;
       slideAnimation(e);
     });
-    window.addEventListener('resize', sizeIt);
+    window.addEventListener('resize', () => {
+      sections.forEach((section) => {
+        gsap.to(section, {
+          x: offsets[activeSlide],
+          duration: 0,
+        });
+      });
+      sizeIt();
+    });
   }, [container, navRef, isAnimationsLoaded]);
 };

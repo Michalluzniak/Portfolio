@@ -13,7 +13,7 @@ import Contact from '@/modules/Sections/Contact';
 const Slider = () => {
   //
   const [isAnimationsLoaded, setIsAnimationsLoaded] = useState(false);
-  const sectionRef = useRef<any>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
 
   useSliderAnimation(sectionRef, navRef, isAnimationsLoaded);

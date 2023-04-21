@@ -4,8 +4,8 @@ import { TextPlugin } from 'gsap/dist/TextPlugin';
 
 export const useAboutMeAnimations = ({ animationLoadingHandler }: any) => {
   useEffect(() => {
-    let cursor = document.querySelector('#hero-description-content');
-    let text: any = document.querySelector('.hero-description');
+    let cursor: HTMLElement | null = document.querySelector('#hero-description-content');
+    let text: HTMLParagraphElement | null | Node = document.querySelector('.hero-description');
 
     gsap.registerPlugin(TextPlugin);
 
@@ -24,7 +24,11 @@ export const useAboutMeAnimations = ({ animationLoadingHandler }: any) => {
         },
         duration: 4,
         ease: 'none',
-        onUpdate: () => text.appendChild(cursor),
+        onUpdate: () => {
+          if (text !== null && cursor !== null) {
+            text.appendChild(cursor);
+          }
+        },
       })
       .to('.scroll-icon-container', {
         opacity: 1,

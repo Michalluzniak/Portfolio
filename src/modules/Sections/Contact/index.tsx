@@ -50,9 +50,9 @@ const Contact = () => {
     return (formValues.email && formValues.subject && formValues.message) !== '';
   };
 
-  const submitForm = (e: any) => {
+  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    const target = e.target as HTMLFormElement;
     e.preventDefault();
-
     isFormValid(formInputs);
     isValidEmail(formInputs.email)
       ? ''
@@ -64,7 +64,7 @@ const Contact = () => {
     if (!isFormValid(formInputs) || !isValidEmail(formInputs.email)) return;
 
     console.log(formInputs);
-    emailjs.sendForm('service_8geokcj', 'template_y2rivbi', e.target, process.env.NEXT_PUBLIC_EMAILJS_API_KEY).then(
+    emailjs.sendForm('service_8geokcj', 'template_y2rivbi', target, process.env.NEXT_PUBLIC_EMAILJS_API_KEY).then(
       (result) => {
         setWasMailSent(true);
       },
@@ -73,7 +73,7 @@ const Contact = () => {
       }
     );
 
-    e.target.reset();
+    target.reset();
     setFormInputs({
       email: '',
       subject: '',
