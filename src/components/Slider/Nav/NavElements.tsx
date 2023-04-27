@@ -23,7 +23,7 @@ export const NavElements = () => {
               </React.Fragment>
             ) : index === 0 ? (
               <React.Fragment key={index}>
-                <p className=" lg:self-center lg:h-auto w-1/12   nav-paragraph cursor-pointer  text-center">
+                <p className="text-dark lg:self-center lg:h-auto w-1/12   nav-paragraph cursor-pointer  text-center">
                   {section}
                 </p>
                 <span className=" w-1/12 bg-soft-white h-1 nav-lines"></span>

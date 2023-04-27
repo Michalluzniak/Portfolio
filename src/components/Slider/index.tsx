@@ -40,7 +40,7 @@ const Slider = () => {
       >
         <source src="blossoming.webm" />
       </video>
-      <main ref={sectionRef} className="flex flex-row w-full h-full">
+      <main ref={sectionRef} className="flex flex-col lg:flex-row w-full h-full">
         <AboutMe animationLoadingHandler={animationLoadingHandler} />
         <Skills />
         <Work />

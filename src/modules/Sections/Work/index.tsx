@@ -11,14 +11,15 @@ const projects = ['color tiles', 'rick & morty character list', 'weather app'];
 const Work = () => {
   const [currentProject, setCurrentProject] = useState<number>(1);
   const [isProjectWindowHovered, setIsProjectWindowHovered] = useState<boolean>(false);
-
+  // w-10/12
+  // h-1/2
   return (
-    <section className="work-section grid grid-cols-[5rem_2fr_1fr] w-full h-full bg-dark shrink-0 sections text-main ">
+    <section className="work-section grid grid-cols-[5rem_2fr_1fr] w-full h-full bg-dark shrink-0 sections text-main relative">
       <VerticalText text="work" color="text-soft-white" />
 
       {currentProject !== 0 && (
         <div
-          className="lg:w-10/12  xl:w-8/12 col-start-2 h-1/2  justify-self-center self-center relative font-logos rounded-2xl overflow-hidden shadow-md shadow-second-red"
+          className="projects-container w-10/12 xl:w-8/12 col-start-2 h-1/2 justify-self-center self-center relative font-logos rounded-2xl overflow-hidden shadow-md shadow-second-red"
           onMouseEnter={() => setIsProjectWindowHovered(true)}
           onMouseLeave={() => {
             setIsProjectWindowHovered(false);

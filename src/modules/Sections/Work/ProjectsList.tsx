@@ -13,7 +13,7 @@ export const ProjectsList = ({ projects, currentProject, setCurrentProject }: Pr
         return (
           <div
             key={project}
-            className={`flex duration-500 ${
+            className={`flex duration-500 project-list-item ${
               index !== projects.length - 1
                 ? currentProject === index + 1
                   ? 'border-b border-main-red'

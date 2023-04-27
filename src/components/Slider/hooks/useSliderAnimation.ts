@@ -13,11 +13,13 @@ export const useSliderAnimation = (
     if (!container.current) {
       return;
     }
-
+    let isMobile = true;
     let isFormHovered = false;
     let scrolling = false;
     let dur = 0.5;
     let offsets: number[] = [];
+    let mobileOffsets: number[] = [];
+    // let constOffsetDirections = { x: offsets[activeSlide], y: mobileOffsets[activeSlide] };
     let oldSlide = 0;
     let activeSlide = 0;
     const navColors = ['#020202', '#F6F4F3', '#020202', '#F6F4F3'];
@@ -55,6 +57,7 @@ export const useSliderAnimation = (
     // Main slide animation logic - scroll / nav
     const slideAnimation = (e: MouseEvent | WheelEvent) => {
       if (isAnimationsLoaded === false || e.target === null) return;
+
       const target = e.target as HTMLElement & HTMLParagraphElement;
       oldSlide = activeSlide;
       e;
@@ -106,12 +109,14 @@ export const useSliderAnimation = (
             scrolling = true;
             activeSlide++;
             gsap.to(sections[activeSlide + 1], {
-              x: offsets[activeSlide],
+              x: !isMobile ? offsets[activeSlide] : 0,
+              y: !isMobile ? 0 : mobileOffsets[activeSlide],
               duration: 0,
             });
 
             gsap.to(sections[activeSlide], {
-              x: offsets[activeSlide],
+              x: !isMobile ? offsets[activeSlide] : 0,
+              y: !isMobile ? 'auto' : mobileOffsets[activeSlide],
               duration: dur,
             });
           } else if (e.deltaY < 0 && activeSlide !== 0) {
@@ -119,12 +124,14 @@ export const useSliderAnimation = (
             activeSlide--;
           }
           gsap.to(sections[activeSlide], {
-            x: offsets[activeSlide],
+            x: !isMobile ? offsets[activeSlide] : 0,
+            y: !isMobile ? 'auto' : mobileOffsets[activeSlide],
             duration: dur,
           });
 
           gsap.to(sections[oldSlide], {
-            x: offsets[activeSlide],
+            x: !isMobile ? offsets[activeSlide] : 0,
+            y: !isMobile ? 'auto' : mobileOffsets[activeSlide],
             duration: dur,
           });
         }
@@ -221,6 +228,8 @@ export const useSliderAnimation = (
       gsap.set(container.current, { width: sections.length * iw });
       gsap.set(sections, { width: iw });
       for (let i = 0; i < sections.length; i++) {
+        console.log(sections[i].offsetHeight);
+        mobileOffsets.push(-sections[i].offsetTop);
         offsets.push(-sections[i].offsetLeft);
       }
     };
