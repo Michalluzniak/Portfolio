@@ -13,7 +13,7 @@ export const useSliderAnimation = (
     if (!container.current) {
       return;
     }
-    let isMobile = true;
+    let isMobile = false;
     let isFormHovered = false;
     let scrolling = false;
     let dur = 0.5;
